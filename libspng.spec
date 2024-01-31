@@ -25,14 +25,13 @@
 Summary:	PNG decoding and encoding library
 Summary(pl.UTF-8):	Biblioteka do dekodowania i kodowania PNG
 Name:		libspng
-Version:	0.6.1
+Version:	0.7.4
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: https://github.com/randy408/libspng/releases
 Source0:	https://github.com/randy408/libspng/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	1300ee3c8f78032e0eff9c65607d2a52
-#Patch0:	%{name}-what.patch
+# Source0-md5:	5072ee5d309c593080ea5f43e81e61e4
 URL:		https://github.com/randy408/libspng
 BuildRequires:	meson
 %{?with_miniz:BuildRequires:	miniz-devel}
@@ -113,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE README.md
+%doc LICENSE README.md SECURITY.md
 %attr(755,root,root) %{_libdir}/libspng.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libspng.so.0
 
