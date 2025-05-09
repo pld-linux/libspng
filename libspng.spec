@@ -36,6 +36,7 @@ URL:		https://github.com/randy408/libspng
 BuildRequires:	meson
 %{?with_miniz:BuildRequires:	miniz-devel}
 BuildRequires:	ninja >= 1.5
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 2.042
 %{!?with_miniz:BuildRequires:	zlib-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
