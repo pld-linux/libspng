@@ -36,7 +36,7 @@ URL:		https://github.com/randy408/libspng
 BuildRequires:	meson
 %{?with_miniz:BuildRequires:	miniz-devel}
 BuildRequires:	ninja >= 1.5
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 %{!?with_miniz:BuildRequires:	zlib-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -88,18 +88,18 @@ Statyczna biblioteka libspng.
 %if %{with sse2}
 CPPFLAGS="%{rpmcppflags} -DSPNG_SSE=%{?with_sse41:4}%{!?with_sse41:%{?with_ssse3:3}%{!?with_ssse3:2}}"
 %endif
-%meson build \
+%meson \
 %if %{without sse}
 	-Denable_opt=false \
 %endif
 	%{?with_miniz:-Duse_miniz=true}
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -p examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
